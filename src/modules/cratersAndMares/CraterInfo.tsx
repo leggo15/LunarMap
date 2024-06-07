@@ -38,15 +38,19 @@ export function setupCraterClick(map: Map) {
       const craterWiki = selectedFeature.get("wiki");
       const craterDepth = selectedFeature.get("depth");
       const craterRadiusFraction = selectedFeature.get("radius");
-      const craterRadiusKm = ((craterRadiusFraction * lunarRadiusKm)*0.17843).toFixed(2); // Convert fraction to kilometers
+      const craterRadiusKm = (
+        craterRadiusFraction *
+        lunarRadiusKm *
+        0.17843
+      ).toFixed(2); // Convert fraction to kilometers
 
       displayDiv.innerHTML = `
-      <img src="${craterImage || 'images/default-image.jpg'}" class="my-image-class" />
+      <img src="${craterImage || "images/default-image.jpg"}" class="my-image-class" />
         <h3>${craterName}</h3>
         <p>Approximate Width: ${craterRadiusKm} km</p>
         <p>Depth: ${craterDepth || "N/A"}</p>
         <p>Eponym: ${craterEponym || "N/A"}</p>
-        ${craterWiki ? `<p><a href="${craterWiki}" target="_blank">More Info</a></p>` : ''}
+        ${craterWiki ? `<p><a href="${craterWiki}" target="_blank">More Info</a></p>` : ""}
       `;
     }
   });

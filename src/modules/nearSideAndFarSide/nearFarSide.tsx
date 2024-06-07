@@ -46,7 +46,10 @@ const getStyle = (feature: Feature) => {
   }
 };
 
-const NearFarSidePlotter: React.FC<NearFarSidePlotterProps> = ({ map, show }) => {
+const NearFarSidePlotter: React.FC<NearFarSidePlotterProps> = ({
+  map,
+  show,
+}) => {
   const [features, setFeatures] = useState<Feature[]>([]);
 
   useEffect(() => {
@@ -57,11 +60,11 @@ const NearFarSidePlotter: React.FC<NearFarSidePlotterProps> = ({ map, show }) =>
           throw new Error("Error fetching the local data.");
         }
         const geoJsonData = await response.json();
-        const data = geoJsonData.features;  // Access the features array from GeoJSON data
+        const data = geoJsonData.features; // Access the features array from GeoJSON data
 
         const loadedFeatures = data.map((featureData: any) => {
-          const coordinates = featureData.geometry.coordinates[0].map((coord: number[]) =>
-            fromLonLat(coord)
+          const coordinates = featureData.geometry.coordinates[0].map(
+            (coord: number[]) => fromLonLat(coord),
           );
           const polygon = new Polygon([coordinates]);
           return new Feature({
