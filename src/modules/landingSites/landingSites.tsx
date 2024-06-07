@@ -33,9 +33,7 @@ const getIconPath = (programName: string) => {
 
 const fetchLandingSites = async (map: Map, mission: string) => {
   try {
-    const response = await fetch(
-      "public/data/moon_landings.json",
-    );
+    const response = await fetch("public/data/moon_landings.json");
     if (!response.ok) throw new Error("Error fetching the requested data.");
 
     const data = await response.json();

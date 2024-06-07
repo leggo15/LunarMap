@@ -37,8 +37,7 @@ async function fetchCraters(map: Map) {
             coordinates[0] +
             ((radius * Math.cos(angle)) / Math.cos(pointLongitudeRadians)) *
               4.5;
-          const pointLatitude =
-            coordinates[1] + radius * Math.sin(angle) * 4.5;
+          const pointLatitude = coordinates[1] + radius * Math.sin(angle) * 4.5;
           points.push(fromLonLat([pointLongitude, pointLatitude]));
         }
         points.push(points[0]); // Complete the polygon
@@ -73,7 +72,7 @@ async function fetchCraters(map: Map) {
               }),
               text: mapFeature.get("name"),
             }),
-          })
+          }),
         );
         return mapFeature;
       }),
