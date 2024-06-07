@@ -72,7 +72,7 @@ async function fetchCraters(map: Map) {
               }),
               text: mapFeature.get("name"),
             }),
-          }),
+          })
         );
         return mapFeature;
       }),
@@ -90,7 +90,7 @@ async function fetchCraters(map: Map) {
       .getArray()
       .filter(
         (layer) =>
-          layer instanceof VectorLayer && layer.get("id") === "Craters",
+          layer instanceof VectorLayer && layer.get("id") === "Craters"
       )
       .forEach((layer) => map.removeLayer(layer));
     map.addLayer(vectorLayer);
@@ -110,7 +110,7 @@ const Craters: React.FC<CratersProps> = ({ map, show }) => {
         .getArray()
         .filter(
           (layer) =>
-            layer instanceof VectorLayer && layer.get("id") === "Craters",
+            layer instanceof VectorLayer && layer.get("id") === "Craters"
         )
         .forEach((layer) => map.removeLayer(layer));
     }
