@@ -15,14 +15,15 @@ interface MaresProps {
 async function fetchMares(map: Map) {
   try {
     const response = await fetch("public/data/mare.geojson");
-    if (!response.ok) throw new Error("Error fetching data from the local file");
+    if (!response.ok)
+      throw new Error("Error fetching data from the local file");
 
     const geojsonData = await response.json();
 
     const features = geojsonData.features.map((feature: any) => {
       const coordinates = feature.geometry.coordinates;
       const transformedCoordinates = coordinates.map((ring: any[]) =>
-        ring.map((coord: any) => fromLonLat(coord))
+        ring.map((coord: any) => fromLonLat(coord)),
       );
 
       const geometry = new Polygon(transformedCoordinates);
@@ -69,7 +70,9 @@ async function fetchMares(map: Map) {
     map
       .getLayers()
       .getArray()
-      .filter((layer) => layer instanceof VectorLayer && layer.get("id") === "mares")
+      .filter(
+        (layer) => layer instanceof VectorLayer && layer.get("id") === "mares",
+      )
       .forEach((layer) => map.removeLayer(layer));
 
     map.addLayer(mareLayer); // Add the layer to the map
@@ -86,7 +89,10 @@ const MoonMares: React.FC<MaresProps> = ({ map, show }) => {
       const layersToRemove = map
         .getLayers()
         .getArray()
-        .filter((layer) => layer instanceof VectorLayer && layer.get("id") === "mares");
+        .filter(
+          (layer) =>
+            layer instanceof VectorLayer && layer.get("id") === "mares",
+        );
       layersToRemove.forEach((layer) => map.removeLayer(layer));
     }
 
@@ -94,7 +100,10 @@ const MoonMares: React.FC<MaresProps> = ({ map, show }) => {
       const layersToRemove = map
         .getLayers()
         .getArray()
-        .filter((layer) => layer instanceof VectorLayer && layer.get("id") === "mares");
+        .filter(
+          (layer) =>
+            layer instanceof VectorLayer && layer.get("id") === "mares",
+        );
       layersToRemove.forEach((layer) => map.removeLayer(layer));
     };
   }, [map, show]);
