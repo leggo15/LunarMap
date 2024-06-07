@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Map } from "ol";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
-import Feature from "ol/Feature";
+import Feature, { FeatureLike } from "ol/Feature";
 import Polygon from "ol/geom/Polygon";
 import { Fill, Stroke, Style } from "ol/style";
 import { fromLonLat } from "ol/proj";
@@ -20,7 +20,7 @@ interface NearFarSidePlotterProps {
   show: boolean;
 }
 
-const getStyle = (feature: Feature<Polygon>) => {
+const getStyle = (feature: FeatureLike) => {
   const name = feature.get("name");
 
   if (name === "Nearside") {
