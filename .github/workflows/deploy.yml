@@ -16,12 +16,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18" # Use the Node.js version your project requires
+          node-version: "18"
 
       - name: Install dependencies
         run: npm install
 
       - name: Build project
+        env:
+          HUSKY: 0
         run: npm run build
 
       - name: Deploy to GitHub Pages
