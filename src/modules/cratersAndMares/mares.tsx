@@ -16,21 +16,20 @@ async function fetchMares(map: Map) {
   try {
     // Assuming the file is located in the public directory and accessible via a static path
     const response = await fetch("public/data/mare.geojson");
-    if (!response.ok)
-      throw new Error("Error fetching data from the local file");
+    if (!response.ok) throw new Error("Error fetching data from the local file");
 
     const geojsonData = await response.json();
 
     const features = geojsonData.features.map((feature) => {
       const coordinates = feature.geometry.coordinates;
       const transformedCoordinates = coordinates.map((ring) =>
-        ring.map((coord) => fromLonLat(coord)),
+        ring.map((coord) => fromLonLat(coord))
       );
 
       const geometry = new Polygon(transformedCoordinates);
       return new Feature({
         geometry: geometry,
-        name: feature.properties.name,
+        name: feature.properties.name
       });
     });
 
@@ -62,25 +61,23 @@ async function fetchMares(map: Map) {
               color: "#000000",
               width: 3,
             }),
-            text: featureName ? featureName : "", // Ensuring that text is always a string
+            text: featureName ? featureName : ''  // Ensuring that text is always a string
           }),
         });
       },
     });
+    
 
-    map
-      .getLayers()
-      .getArray()
-      .filter(
-        (layer) => layer instanceof VectorLayer && layer.get("id") === "mares",
-      )
-      .forEach((layer) => map.removeLayer(layer));
+    map.getLayers().getArray()
+       .filter(layer => layer instanceof VectorLayer && layer.get("id") === "mares")
+       .forEach(layer => map.removeLayer(layer));
 
     map.addLayer(mareLayer); // Add the layer to the map
   } catch (error) {
     console.error("Failed to load local moon mares:", error);
   }
 }
+
 
 const MoonMares: React.FC<MaresProps> = ({ map, show }) => {
   useEffect(() => {
