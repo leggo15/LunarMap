@@ -20,7 +20,7 @@ interface NearFarSidePlotterProps {
   show: boolean;
 }
 
-const getStyle = (feature: Feature) => {
+const getStyle = (feature: Feature<Polygon>) => {
   const name = feature.get("name");
 
   if (name === "Nearside") {
@@ -50,7 +50,7 @@ const NearFarSidePlotter: React.FC<NearFarSidePlotterProps> = ({
   map,
   show,
 }) => {
-  const [features, setFeatures] = useState<Feature[]>([]);
+  const [features, setFeatures] = useState<Feature<Polygon>[]>([]);
 
   useEffect(() => {
     const fetchNearFarSide = async () => {
@@ -64,7 +64,7 @@ const NearFarSidePlotter: React.FC<NearFarSidePlotterProps> = ({
 
         const loadedFeatures = data.map((featureData: any) => {
           const coordinates = featureData.geometry.coordinates[0].map(
-            (coord: number[]) => fromLonLat(coord),
+            (coord: number[]) => fromLonLat(coord)
           );
           const polygon = new Polygon([coordinates]);
           return new Feature({

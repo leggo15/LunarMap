@@ -22,12 +22,12 @@ async function fetchCraters(map: Map) {
     const data = geojsonData.features;
 
     const vectorSource = new VectorSource({
-      features: data.map((feature) => {
+      features: data.map((feature: any) => {
         const properties = feature.properties;
         const coordinates = feature.geometry.coordinates;
         const num_points = properties.numPoints || 16;
         const radius = properties.radius;
-        const points = [];
+        const points: any[] = [];
 
         for (let i = 0; i < num_points; i++) {
           const angle = (i * 2 * Math.PI) / num_points;
@@ -72,7 +72,7 @@ async function fetchCraters(map: Map) {
               }),
               text: mapFeature.get("name"),
             }),
-          }),
+          })
         );
         return mapFeature;
       }),
@@ -90,7 +90,7 @@ async function fetchCraters(map: Map) {
       .getArray()
       .filter(
         (layer) =>
-          layer instanceof VectorLayer && layer.get("id") === "Craters",
+          layer instanceof VectorLayer && layer.get("id") === "Craters"
       )
       .forEach((layer) => map.removeLayer(layer));
     map.addLayer(vectorLayer);
@@ -110,7 +110,7 @@ const Craters: React.FC<CratersProps> = ({ map, show }) => {
         .getArray()
         .filter(
           (layer) =>
-            layer instanceof VectorLayer && layer.get("id") === "Craters",
+            layer instanceof VectorLayer && layer.get("id") === "Craters"
         )
         .forEach((layer) => map.removeLayer(layer));
     }
