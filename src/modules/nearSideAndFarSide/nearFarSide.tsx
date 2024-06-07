@@ -64,7 +64,7 @@ const NearFarSidePlotter: React.FC<NearFarSidePlotterProps> = ({
 
         const loadedFeatures = data.map((featureData: any) => {
           const coordinates = featureData.geometry.coordinates[0].map(
-            (coord: number[]) => fromLonLat(coord)
+            (coord: number[]) => fromLonLat(coord),
           );
           const polygon = new Polygon([coordinates]);
           return new Feature({

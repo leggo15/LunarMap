@@ -24,7 +24,7 @@ async function fetchMares(map: Map) {
     const features = geojsonData.features.map((feature: any) => {
       const coordinates = feature.geometry.coordinates;
       const transformedCoordinates = coordinates.map((ring: any[]) =>
-        ring.map((coord: any) => fromLonLat(coord))
+        ring.map((coord: any) => fromLonLat(coord)),
       );
 
       const geometry = new Polygon(transformedCoordinates);
@@ -72,7 +72,7 @@ async function fetchMares(map: Map) {
       .getLayers()
       .getArray()
       .filter(
-        (layer) => layer instanceof VectorLayer && layer.get("id") === "mares"
+        (layer) => layer instanceof VectorLayer && layer.get("id") === "mares",
       )
       .forEach((layer) => map.removeLayer(layer));
 
@@ -92,7 +92,7 @@ const MoonMares: React.FC<MaresProps> = ({ map, show }) => {
         .getArray()
         .filter(
           (layer) =>
-            layer instanceof VectorLayer && layer.get("id") === "mares"
+            layer instanceof VectorLayer && layer.get("id") === "mares",
         );
       layersToRemove.forEach((layer) => map.removeLayer(layer));
     }
@@ -104,7 +104,7 @@ const MoonMares: React.FC<MaresProps> = ({ map, show }) => {
         .getArray()
         .filter(
           (layer) =>
-            layer instanceof VectorLayer && layer.get("id") === "mares"
+            layer instanceof VectorLayer && layer.get("id") === "mares",
         );
       layersToRemove.forEach((layer) => map.removeLayer(layer));
     };
