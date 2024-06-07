@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap");
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: "Exo 2", sans-serif;
+}
+
+#root {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.map-container {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+#mainContainer {
+  width: 15%;
+  background-color: #f4f4f4;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  order: 2;
+  overflow: scroll;
+}
+
+/* Media query for screens less than or equal to 768 pixels wide */
+@media (max-width: 768px) {
+  #mainContainer {
+    width: 30%;
+  }
+}
+
+header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#selectEra,
+#checkBoxlayers {
+  margin-bottom: 20px;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+p {
+  color: #666;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+#LandingInfo {
+  height: 50%; /* Fixed height */
+  min-height: 50%; /* Minimum height ensures it doesn't collapse */
+  max-height: 50%; /* Maximum height matches the fixed height */
+  overflow-y: auto; /* Enables vertical scrolling when content exceeds the div's height */
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  color: white;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+/*##### Cordinate display #####*/
+.mouse-position-display {
+  position: absolute;
+  bottom: 70px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+/*##### Altitude meter #####*/
+.altitude-slider-container {
+  position: absolute;
+  bottom: 30px; /* Adjust this value to not overlap with the coordinate display */
+  left: 10px;
+  width: 300px; /* Set the width of the slider container */
+}
+
+.altitude-slider {
+  width: 100%; /* Make slider take full width of its container */
+}
+
+.altitude-label {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.altitude-container {
+  position: absolute;
+  bottom: 10px; /* Adjust this to move the container up or down */
+  left: 10px; /* Adjust this to move the container left or right */
+  width: 300px; /* Control the width of the container */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Semi-transparent background for visibility */
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-family: "Arial", sans-serif;
+  z-index: 1000; /* Ensure it's above the map */
+}
+
+.altitude-display {
+  margin-bottom: 5px;
+}
+
+.altitude-slider {
+  width: 100%;
+}
+
+/*##### Mission images #####*/
+.my-image-class {
+  width: 100% !important; /* Makes the image responsive and enforces this rule */
+  height: auto !important; /* Maintains the aspect ratio of the image */
+  max-width: 400px !important; /* Limits the size to a maximum width */
+}
+
+/* Normal state of the link */
+a {
+  color: orange;
+  text-decoration: none;
+}
+
+a:visited {
+  color: lightgreen;
+}
+
+a:hover {
+  color: red;
+}
+
+button {
+  background-color: #404040;
+  color: white;
+  border: none;
+  padding: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #505050;
+}

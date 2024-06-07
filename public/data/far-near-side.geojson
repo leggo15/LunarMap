@@ -1,0 +1,47 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Farside",
+                "Description": "The far side of the Moon is the lunar hemisphere that always faces away from Earth, opposite to the near side, because of synchronous rotation in the Moons orbit. Compared to the near side, the far sides terrain is rugged, with a multitude of impact craters and relatively few flat and dark lunar maria (seas), giving it an appearance closer to other barren places in the Solar System such as Mercury and Callisto.",
+                "Wiki": "https://en.wikipedia.org/wiki/Far_side_of_the_Moon"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [-4.432515, 71.175279],[-23.604170, 69.888020],[-42.218741, 66.768264],[-57.885758, 59.443035]
+                        ,[-69.497566, 48.550426],[-76.254662, 34.543167],[-83.736052, 4.239303],[-92.692172, -21.856905],
+                        [-111.242418, -38.577700],[-133.167257, -47.739048],[-158.134423, -51.337447],[-180, -51.869324],
+                        [-180, 85.051129],[180, 85.051129],[180, -51.869324],[158.134423, -51.337447],[133.167257, -47.739048],
+                        [111.242418, -38.577700],[92.692172, -21.856905],[83.736052, 4.239303],[76.254662, 34.543167],
+                        [69.497566, 48.550426],[57.885758, 59.443035],[42.218741, 66.768264],[23.604170, 69.888020],[-4.432515, 71.175279]
+                    ]
+                ]
+            }
+        },
+        {
+            "properties": {
+            "name": "Nearside",
+            "Description": "The near side of the Moon is the lunar hemisphere that always faces towards Earth, opposite to the far side. Only one side of the Moon is visible from Earth because the Moon rotates on its axis at the same rate that the Moon orbits the Earth—a situation known as tidal locking.",
+            "Wiki": "https://en.wikipedia.org/wiki/Near_side_of_the_Moon"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [-4.432515, 71.175279],[-23.604170, 69.888020],[-42.218741, 66.768264],[-57.885758, 59.443035]
+                        ,[-69.497566, 48.550426],[-76.254662, 34.543167],[-83.736052, 4.239303],[-92.692172, -21.856905],
+                        [-111.242418, -38.577700],[-133.167257, -47.739048],[-158.134423, -51.337447],[-180, -51.869324],
+                        [-180, -85.051129],[180, -85.051129],[180, -51.869324],[158.134423, -51.337447],[133.167257, -47.739048],
+                        [111.242418, -38.577700],[92.692172, -21.856905],[83.736052, 4.239303],[76.254662, 34.543167],
+                        [69.497566, 48.550426],[57.885758, 59.443035],[42.218741, 66.768264],[23.604170, 69.888020],
+                        [-4.432515, 71.175279]
+                    ]
+                ]
+            }
+        }
+    ]
+}
