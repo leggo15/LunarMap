@@ -17,5 +17,6 @@
     "test": "prettier --check . && tsc --noEmit",
     "prepare": "husky",
     "build": "npm test && vite build"
-  }
+  },
+  "homepage": "https://your-username.github.io/LunarSurfaceMap"
 }
