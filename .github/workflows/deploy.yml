@@ -1,40 +1,30 @@
-name: Deploy Vite App to GitHub Pages
-
 on:
   push:
     branches:
       - main
 
 jobs:
-  build-and-deploy:
+  publish:
     runs-on: ubuntu-latest
 
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      id-token: write # to verify the deployment originates from an appropriate
+      pages: write # to deploy to Pages
+      contents: read # to checkout private repositories
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: "18"
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        env:
-          HUSKY: 0
-        run: npm run build
-
-      - name: Deploy to GitHub Pages
-        run: |
-          mkdir -p ./docs
-          rm -rf ./docs/*
-          mv ./dist/* ./docs/
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add .
-          git commit -m 'Deploy to GitHub Pages'
-          git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          node-version: 20.x
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+      - uses: actions/deploy-pages@v4
+        id: deployment

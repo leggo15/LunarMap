@@ -22,12 +22,12 @@ async function fetchCraters(map: Map) {
     const data = geojsonData.features;
 
     const vectorSource = new VectorSource({
-      features: data.map((feature: any) => {
+      features: data.map((feature) => {
         const properties = feature.properties;
         const coordinates = feature.geometry.coordinates;
         const num_points = properties.numPoints || 16;
         const radius = properties.radius;
-        const points: any[] = [];
+        const points = [];
 
         for (let i = 0; i < num_points; i++) {
           const angle = (i * 2 * Math.PI) / num_points;

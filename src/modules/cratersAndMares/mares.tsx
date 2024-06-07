@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Map } from "ol";
-import Feature, { FeatureLike } from "ol/Feature";
+import Feature from "ol/Feature";
 import Polygon from "ol/geom/Polygon";
 import { fromLonLat } from "ol/proj";
 import VectorLayer from "ol/layer/Vector";
@@ -14,16 +14,17 @@ interface MaresProps {
 
 async function fetchMares(map: Map) {
   try {
+    // Assuming the file is located in the public directory and accessible via a static path
     const response = await fetch("public/data/mare.geojson");
     if (!response.ok)
       throw new Error("Error fetching data from the local file");
 
     const geojsonData = await response.json();
 
-    const features = geojsonData.features.map((feature: any) => {
+    const features = geojsonData.features.map((feature) => {
       const coordinates = feature.geometry.coordinates;
-      const transformedCoordinates = coordinates.map((ring: any[]) =>
-        ring.map((coord: any) => fromLonLat(coord)),
+      const transformedCoordinates = coordinates.map((ring) =>
+        ring.map((coord) => fromLonLat(coord)),
       );
 
       const geometry = new Polygon(transformedCoordinates);
@@ -42,7 +43,7 @@ async function fetchMares(map: Map) {
       properties: { id: "mares" },
       maxZoom: 6,
       zIndex: 10,
-      style: (feature: FeatureLike) => {
+      style: (feature) => {
         const featureName = feature.get("name");
         return new Style({
           stroke: new Stroke({
@@ -97,6 +98,7 @@ const MoonMares: React.FC<MaresProps> = ({ map, show }) => {
     }
 
     return () => {
+      // Cleanup function to remove layers when the component is unmounted or hidden
       const layersToRemove = map
         .getLayers()
         .getArray()
