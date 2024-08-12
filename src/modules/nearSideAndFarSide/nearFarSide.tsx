@@ -67,7 +67,7 @@ const NearFarSidePlotter: React.FC<NearFarSidePlotterProps> = ({
   useEffect(() => {
     const fetchNearFarSide = async () => {
       try {
-        const response = await fetch("public/data/far-near-side.geojson");
+        const response = await fetch("data/far-near-side.geojson");
         if (!response.ok) {
           throw new Error("Error fetching the local data.");
         }

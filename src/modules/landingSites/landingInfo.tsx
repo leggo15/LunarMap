@@ -39,7 +39,7 @@ export function setupLandingClick(map: Map) {
 
       if (label) {
         try {
-          const response = await fetch("public/data/moon_landings.json");
+          const response = await fetch("data/moon_landings.json");
           const data = await response.json();
           const landing = data.find(
             (item: { label: any }) => item.label === label,

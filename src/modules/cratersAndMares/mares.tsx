@@ -30,7 +30,7 @@ interface GeoJSONData {
 
 async function fetchMares(map: Map) {
   try {
-    const response = await fetch("public/data/mare.geojson");
+    const response = await fetch("data/mare.geojson");
     if (!response.ok)
       throw new Error("Error fetching data from the local file");
 

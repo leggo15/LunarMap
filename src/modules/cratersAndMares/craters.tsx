@@ -41,7 +41,7 @@ interface CratersGeoJSON {
 
 async function fetchCraters(map: Map) {
   try {
-    const response = await fetch("public/data/craters.geojson");
+    const response = await fetch("data/craters.geojson");
     if (!response.ok) throw new Error("Error fetching data");
 
     const geojsonData: CratersGeoJSON = await response.json();
