@@ -23,20 +23,20 @@ For the moon map, there were not many publicly available data sources with geogr
 https://www.openplanetary.org/opm-basemaps/moon-hillshaded-albedo
 For this map, we followed the provided instructions but realized that we needed to set -y instead of y.
 
-**DataSource for the markers:**<br>
+**DataSource for the markers:**`<br>`
 https://github.com/vasturiano/globe.gl/blob/master/example/moon-landing-sites/moon_landings.json
 
-**DataSource for the craters:**<br>
-https://www.openplanetary.org/opm-basemaps/opm-moon-basemap-v0-1 <br>
+**DataSource for the craters:**`<br>`
+https://www.openplanetary.org/opm-basemaps/opm-moon-basemap-v0-1 `<br>`
 We used this map to lay out the data for the craters. The process involved finding the location of each crater, selecting a point, and then determining the radius we wanted to assign to the point based on the size of the crater.
 
-**DataSource for the Mare data:**<br>
-https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2000JE001244 <br>
-https://www.openplanetary.org/opm-basemaps/opm-moon-basemap-v0-1 <br>
+**DataSource for the Mare data:**`<br>`
+https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2000JE001244 `<br>`
+https://www.openplanetary.org/opm-basemaps/opm-moon-basemap-v0-1 `<br>`
 We used the same proses for this data source as the craters.
 
-**Data for the far and near side**<br>
-https://earthsky.org/space/why-the-moons-near-and-far-sides-look-different/ <br>
+**Data for the far and near side**`<br>`
+https://earthsky.org/space/why-the-moons-near-and-far-sides-look-different/ `<br>`
 For both the far and near sides, we were not able to find geographical data, so we used a picture of the near side and drew the points by hand.
 
 ## API
@@ -58,6 +58,7 @@ We began by setting up a user account on Heroku and proceeded to create a Postgr
 
 - Styling the webpage
 - Converted data into geoJson
+- Made the script converting wiki data into useful GeoJSON
 - Implemented data shown on the map
 - Did the math for the Altitude meter.
 
@@ -77,5 +78,5 @@ In the grading of our project, we hope the sensor considers the thorough impleme
 
 ## Authors and Acknowledgment
 
-We used course materials to set up a basic OpenLayers structure and GitHub Actions. <br>
+We used course materials to set up a basic OpenLayers structure and GitHub Actions. `<br>`
 We appreciate the creators of ChatGPT for creating an advanced code-helping tool.
