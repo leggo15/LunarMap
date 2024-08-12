@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Map } from "ol";
-import Feature from "ol/Feature";
+import Feature, { FeatureLike } from 'ol/Feature';
 import Polygon from "ol/geom/Polygon";
 import { fromLonLat } from "ol/proj";
 import VectorLayer from "ol/layer/Vector";
@@ -12,19 +12,35 @@ interface MaresProps {
   show: boolean;
 }
 
+interface GeoJSONFeature {
+  type: string;
+  geometry: {
+    type: string;
+    coordinates: number[][][];
+  };
+  properties: {
+    name: string;
+  };
+}
+
+interface GeoJSONData {
+  type: string;
+  features: GeoJSONFeature[];
+}
+
+
 async function fetchMares(map: Map) {
   try {
-    // Assuming the file is located in the public directory and accessible via a static path
     const response = await fetch("public/data/mare.geojson");
     if (!response.ok)
       throw new Error("Error fetching data from the local file");
 
-    const geojsonData = await response.json();
+    const geojsonData: GeoJSONData = await response.json();
 
-    const features = geojsonData.features.map((feature) => {
+    const features = geojsonData.features.map((feature: GeoJSONFeature) => {
       const coordinates = feature.geometry.coordinates;
-      const transformedCoordinates = coordinates.map((ring) =>
-        ring.map((coord) => fromLonLat(coord)),
+      const transformedCoordinates = coordinates.map((ring: number[][]) =>
+        ring.map((coord: number[]) => fromLonLat(coord)),
       );
 
       const geometry = new Polygon(transformedCoordinates);
@@ -43,8 +59,8 @@ async function fetchMares(map: Map) {
       properties: { id: "mares" },
       maxZoom: 6,
       zIndex: 10,
-      style: (feature) => {
-        const featureName = feature.get("name");
+      style: (feature: FeatureLike) => {
+        const featureName = (feature as Feature).get("name"); // Type assertion
         return new Style({
           stroke: new Stroke({
             color: "rgba(30, 80, 155, 0.5)",
@@ -67,6 +83,7 @@ async function fetchMares(map: Map) {
         });
       },
     });
+    
 
     map
       .getLayers()
@@ -81,6 +98,7 @@ async function fetchMares(map: Map) {
     console.error("Failed to load local moon mares:", error);
   }
 }
+
 
 const MoonMares: React.FC<MaresProps> = ({ map, show }) => {
   useEffect(() => {

@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Map } from "ol";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
-import Feature from "ol/Feature";
+import Feature, { FeatureLike } from 'ol/Feature';
+import Geometry from 'ol/geom/Geometry';
 import Polygon from "ol/geom/Polygon";
-import { Fill, Stroke, Style } from "ol/style";
+import { Fill, Stroke, Style } from 'ol/style';
 import { fromLonLat } from "ol/proj";
 
 interface NearFarSideData {
@@ -20,8 +21,8 @@ interface NearFarSidePlotterProps {
   show: boolean;
 }
 
-const getStyle = (feature: Feature) => {
-  const name = feature.get("name");
+const getStyle = (feature: FeatureLike): Style => {
+  const name = (feature as Feature<Geometry>).get("name");
 
   if (name === "Nearside") {
     return new Style({
@@ -44,6 +45,17 @@ const getStyle = (feature: Feature) => {
       }),
     });
   }
+
+  // Default style if no condition is met
+  return new Style({
+    stroke: new Stroke({
+      color: "rgba(100, 100, 100, 0.075)",
+      width: 1,
+    }),
+    fill: new Fill({
+      color: "rgba(100, 100, 100, 0.1)",
+    }),
+  });
 };
 
 const NearFarSidePlotter: React.FC<NearFarSidePlotterProps> = ({
