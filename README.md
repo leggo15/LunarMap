@@ -1,6 +1,6 @@
 # Lunar Surface Map (exam)
 
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Deployed-brightgreen)](https://kristiania-kws2100-2024.github.io/kws2100-exam-ImreAbelvik/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Deployed-brightgreen)](https://leggo15.github.io/LunarMap/)
 
 This map is meant as an educational resource for people who want to learn about the lunar surface. It contains locational data about the different lunar landing sites and their purpose, aswell as basic information about varous craters with links to learn more about them. It also contains some basic information about mare's and the difference between the near and far side of the moon.
 
@@ -35,7 +35,7 @@ https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2000JE001244 `<br>`
 https://www.openplanetary.org/opm-basemaps/opm-moon-basemap-v0-1 `<br>`
 We used the same proses for this data source as the craters.
 
-**Data for the far and near side**`<br>`
+**Data for the far and near side** `<br>`
 https://earthsky.org/space/why-the-moons-near-and-far-sides-look-different/ `<br>`
 For both the far and near sides, we were not able to find geographical data, so we used a picture of the near side and drew the points by hand.
 
