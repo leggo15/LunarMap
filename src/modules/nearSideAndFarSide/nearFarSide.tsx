@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Map } from "ol";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
-import Feature, { FeatureLike } from 'ol/Feature';
-import Geometry from 'ol/geom/Geometry';
+import Feature, { FeatureLike } from "ol/Feature";
+import Geometry from "ol/geom/Geometry";
 import Polygon from "ol/geom/Polygon";
-import { Fill, Stroke, Style } from 'ol/style';
+import { Fill, Stroke, Style } from "ol/style";
 import { fromLonLat } from "ol/proj";
 
 interface NearFarSideData {

@@ -13,16 +13,42 @@ interface CratersProps {
   show: boolean;
 }
 
+interface CraterFeatureProperties {
+  name: string;
+  Wiki: string | null;
+  radius: number;
+  depth: number;
+  eponym: string | null;
+  image_url: string | null;
+  numPoints?: number; // Optional property
+}
+
+interface CraterFeatureGeometry {
+  type: string;
+  coordinates: [number, number];
+}
+
+interface CraterFeature {
+  type: string;
+  properties: CraterFeatureProperties;
+  geometry: CraterFeatureGeometry;
+}
+
+interface CratersGeoJSON {
+  type: string;
+  features: CraterFeature[];
+}
+
 async function fetchCraters(map: Map) {
   try {
     const response = await fetch("public/data/craters.geojson");
     if (!response.ok) throw new Error("Error fetching data");
 
-    const geojsonData = await response.json();
+    const geojsonData: CratersGeoJSON = await response.json();
     const data = geojsonData.features;
 
     const vectorSource = new VectorSource({
-      features: data.map((feature) => {
+      features: data.map((feature: CraterFeature) => {
         const properties = feature.properties;
         const coordinates = feature.geometry.coordinates;
         const num_points = properties.numPoints || 16;

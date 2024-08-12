@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Map } from "ol";
-import Feature, { FeatureLike } from 'ol/Feature';
+import Feature, { FeatureLike } from "ol/Feature";
 import Polygon from "ol/geom/Polygon";
 import { fromLonLat } from "ol/proj";
 import VectorLayer from "ol/layer/Vector";
@@ -27,7 +27,6 @@ interface GeoJSONData {
   type: string;
   features: GeoJSONFeature[];
 }
-
 
 async function fetchMares(map: Map) {
   try {
@@ -83,7 +82,6 @@ async function fetchMares(map: Map) {
         });
       },
     });
-    
 
     map
       .getLayers()
@@ -98,7 +96,6 @@ async function fetchMares(map: Map) {
     console.error("Failed to load local moon mares:", error);
   }
 }
-
 
 const MoonMares: React.FC<MaresProps> = ({ map, show }) => {
   useEffect(() => {
