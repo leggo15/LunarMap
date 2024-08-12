@@ -124,7 +124,7 @@ export function MapApplication() {
         </div>
         <button onClick={AdditionalInformation}>Additional Information</button>
         <p>
-          *All data-points features on this web-page are proximate and not meant
+          *All data-points featured on this web-page are proximate and not meant
           for scientific use.
         </p>
       </div>
