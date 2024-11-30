@@ -28,7 +28,7 @@ https://github.com/vasturiano/globe.gl/blob/master/example/moon-landing-sites/mo
 
 **DataSource for the craters:**`<br>`
 https://www.openplanetary.org/opm-basemaps/opm-moon-basemap-v0-1 `<br>`
-We used this map to lay out the data for the craters. The process involved finding the location of each crater, selecting a point, and then determining the radius we wanted to assign to the point based on the size of the crater. (Post Exam we created FetchWikiCraterData.ipynb, a simple script to scrape wikipedia for crater data).
+We used this map to lay out the data for the craters. The process involved finding the location of each crater, selecting a point, and then determining the radius we wanted to assign to the point based on the size of the crater. (Post Exam we created FetchWikiCraterData.ipynb, a simple script to scrape wikipedia for crater data. We also moved the data directly to the repo instead of Heroku).
 
 **DataSource for the Mare data:**`<br>`
 https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2000JE001244 `<br>`
