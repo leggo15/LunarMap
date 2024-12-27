@@ -127,6 +127,9 @@ export function MapApplication() {
           *All data-points featured on this web-page are proximate and not meant
           for scientific use.
         </p>
+        <a href="https://github.com/leggo15/LunarMap">Github</a>
+        <p>
+          </p>
       </div>
       <MapView map={map} />
 
